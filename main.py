@@ -2,6 +2,7 @@ from FilaCircularInternet import MyCircularQueue
 import turtle
 import time
 
+
 def desenharNomes(quant, nomes):
     turtle.penup()
     turtle.hideturtle()
@@ -66,10 +67,11 @@ def desenharNomes(quant, nomes):
 
 
 def andarBomba(quant, passar):
-    turtle.showturtle()
     parteCirculo = 360 / quant
+    turtle.speed(0)
     turtle.goto(0, -20*quant)
     turtle.speed(3)
+    turtle.showturtle()
     for i in range(passar):
         turtle.shape("turtle")
         turtle.color("green")
@@ -91,19 +93,27 @@ fila = MyCircularQueue(len(nomes))
 for nome in nomes:  
     fila.enqueue(nome)
 
+
 desenharNomes(fila.size,nomes)
+
+num = 0
+numAnt = 0
+somar = 0
 
 while True:
     if fila.size > 1:
         #print("Participantes restantes: ")
         #fila.printCQueue()
+        print(fila.lista())
         num = int(turtle.numinput("Batata Quente","Digite o número de vezes que a batata quente será passada: "))
         andarBomba(fila.size, num)
         for j in range(num):
             fila.mudarLugar()
+        
+        
 
         perdedor = fila.dequeue()
-        nomes.remove(perdedor)
+        nomes = fila.lista()
         turtle.TK.messagebox.showinfo(title="Batata Quente:", message=f"{perdedor} foi eliminado")
         #print(f"{perdedor} foi eliminado")
         turtle.clear()

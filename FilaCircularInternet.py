@@ -59,4 +59,22 @@ class MyCircularQueue():
                 print(self.queue[i], end=" ")
             print()
 
+    def lista(self):
 
+        lista = []
+        if(self.head == -1):
+            print("No element in the circular queue")
+
+        elif (self.tail >= self.head):
+            for i in range(self.head, self.tail + 1):
+                print(self.queue[i], end=" ")
+                lista.append(self.queue[i])
+            print()
+        else:
+            for i in range(self.head, self.k):
+                print(self.queue[i], end=" ")
+                lista.append(self.queue[i])
+            for i in range(0, self.tail + 1):
+                print(self.queue[i], end=" ")
+                lista.append(self.queue[i])
+        return lista
